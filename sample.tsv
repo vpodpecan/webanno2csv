@@ -1,0 +1,369 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.Canonicalform|Canonical
+#T_SP=webanno.custom.Category|Category
+#T_SP=webanno.custom.Definitionelement|Def_element
+#T_SP=webanno.custom.Relation|Relation
+#T_SP=webanno.custom.Relation_definitor|Rel_verb_frame
+
+
+#Text=Udornice so površinske kraške oblike, ki nastanejo s podiranjem stropa v podzemnih jamah z aktivnim vodnim tokom, ko se zniža gladina podzemne vode (Stepišnik, 2006).
+1-1	0-8	Udornice	_	A.1 Surface landform	DEFINIENDUM	_	_	
+1-2	9-11	so	_	_	DEFINITOR	_	_	
+1-3	12-22	površinske	_	_	GENUS[20]	HAS\_LOCATION	_	
+1-4	23-29	kraške	_	_	GENUS[20]	_	_	
+1-5	30-36	oblike	_	_	GENUS[20]	_	_	
+1-6	36-37	,	_	_	_	_	_	
+1-7	38-40	ki	_	_	_	_	_	
+1-8	41-50	nastanejo	_	_	_	HAS\_CAUSE[35]	frame\_CAUSE[58]	
+1-9	51-52	s	_	_	_	HAS\_CAUSE[35]	frame\_CAUSE[58]	
+1-10	53-63	podiranjem	_	B.1 Movement	_	HAS\_CAUSE[35]	_	
+1-11	64-70	stropa	_	_	_	HAS\_CAUSE[35]	_	
+1-12	71-72	v	_	_	_	HAS\_LOCATION[36]	frame\_LOCATION	
+1-13	73-82	podzemnih	_	_	_	HAS\_LOCATION[36]	_	
+1-14	83-88	jamah	_	A.2 Underground landform	_	HAS\_LOCATION[36]	_	
+1-15	89-90	z	_	_	_	HAS\_LOCATION[36]	_	
+1-16	91-99	aktivnim	_	_	_	HAS\_LOCATION[36]	_	
+1-17	100-106	vodnim	_	_	_	HAS\_LOCATION[36]	_	
+1-18	107-112	tokom	_	_	_	HAS\_LOCATION[36]	_	
+1-19	112-113	,	_	_	_	_	_	
+1-20	114-116	ko	_	_	_	_	_	
+1-21	117-119	se	_	_	_	OCCURS\_IN\_TIME[37]	frame\_TIME[59]	
+1-22	120-125	zniža	_	_	_	OCCURS\_IN\_TIME[37]	frame\_TIME[59]	
+1-23	126-133	gladina	_	_	_	OCCURS\_IN\_TIME[37]	_	
+1-24	134-142	podzemne	_	_	_	OCCURS\_IN\_TIME[37]	_	
+1-25	143-147	vode	_	_	_	OCCURS\_IN\_TIME[37]	_	
+1-26	148-149	(	_	_	_	_	_	
+1-27	149-158	Stepišnik	_	_	_	_	_	
+1-28	158-159	,	_	_	_	_	_	
+1-29	160-164	2006	_	_	_	_	_	
+1-30	164-165	)	_	_	_	_	_	
+1-31	165-166	.	_	_	_	_	_	
+
+#Text=Udornice so kraške globeli , ki nastanejo z udori stropov nad podzemnimi votlinami.
+2-1	168-176	Udornice	_	A.1 Surface landform	DEFINIENDUM	_	_	
+2-2	177-179	so	_	_	DEFINITOR	_	_	
+2-3	180-186	kraške	_	A.1 Surface landform[2]	GENUS[21]	_	_	
+2-4	187-194	globeli	_	A.1 Surface landform[2]	GENUS[21]	_	_	
+2-5	195-196	,	_	_	_	_	_	
+2-6	197-199	ki	_	_	_	_	_	
+2-7	200-209	nastanejo	_	_	_	HAS\_CAUSE[38]	frame\_CAUSE[60]	
+2-8	210-211	z	_	_	_	HAS\_CAUSE[38]	frame\_CAUSE[60]	
+2-9	212-217	udori	_	B.1 Movement	_	HAS\_CAUSE[38]	_	
+2-10	218-225	stropov	_	_	_	HAS\_CAUSE[38]	_	
+2-11	226-229	nad	_	_	_	HAS\_LOCATION[39]	frame\_LOCATION	
+2-12	230-240	podzemnimi	_	_	_	HAS\_LOCATION[39]	_	
+2-13	241-250	votlinami	_	D.1 Abiotic	_	HAS\_LOCATION[39]	_	
+2-14	250-251	.	_	_	_	_	_	
+
+#Text=Udornice so zaprte kraške globeli različnih dimenzij in oblik, ki so nastale z udori stropov nad podzemnimi votlinami.
+3-1	253-261	Udornice	_	A.1 Surface landform	DEFINIENDUM	_	_	
+3-2	262-264	so	_	_	DEFINITOR	_	_	
+3-3	265-271	zaprte	_	_	_	HAS\_FORM	_	
+3-4	272-278	kraške	_	A.1 Surface landform[3]	GENUS[22]	_	_	
+3-5	279-286	globeli	_	A.1 Surface landform[3]	GENUS[22]	_	_	
+3-6	286-287	 	_	_	_	_	_	
+3-7	287-296	različnih	_	_	_	HAS\_SIZE[40]|HAS\_FORM[41]	_	
+3-8	297-305	dimenzij	_	_	_	HAS\_SIZE[40]	_	
+3-9	306-308	in	_	_	_	_	_	
+3-10	309-314	oblik	_	_	_	HAS\_FORM	_	
+3-11	314-315	,	_	_	_	_	_	
+3-12	316-318	ki	_	_	_	_	_	
+3-13	319-321	so	_	_	_	HAS\_CAUSE[42]	frame\_CAUSE[61]	
+3-14	322-329	nastale	_	_	_	HAS\_CAUSE[42]	frame\_CAUSE[61]	
+3-15	330-331	z	_	_	_	HAS\_CAUSE[42]	frame\_CAUSE[61]	
+3-16	332-337	udori	_	B.1 Movement	_	HAS\_CAUSE[42]	_	
+3-17	338-345	stropov	_	_	_	HAS\_CAUSE[42]	_	
+3-18	346-349	nad	_	_	_	HAS\_LOCATION[43]	frame\_LOCATION	
+3-19	350-360	podzemnimi	_	_	_	HAS\_LOCATION[43]	_	
+3-20	361-370	votlinami	_	_	_	HAS\_LOCATION[43]	_	
+3-21	370-371	.	_	_	_	_	_	
+
+#Text=Udornice so večje kraške kotanje , ki so nastale zaradi rušenja stropa, zato imajo strma pobočja.
+4-1	373-381	Udornice	_	A.1 Surface landform	DEFINIENDUM	_	_	
+4-2	382-384	so	_	_	DEFINITOR	_	_	
+4-3	385-390	večje	_	_	_	HAS\_SIZE	_	
+4-4	391-397	kraške	_	A.1 Surface landform[4]	GENUS[23]	_	_	
+4-5	398-405	kotanje	_	A.1 Surface landform[4]	GENUS[23]	_	_	
+4-6	405-406	 	_	_	_	_	_	
+4-7	406-407	,	_	_	_	_	_	
+4-8	408-410	ki	_	_	_	_	_	
+4-9	411-413	so	_	_	_	HAS\_CAUSE[44]	frame\_CAUSE[62]	
+4-10	414-421	nastale	_	_	_	HAS\_CAUSE[44]	frame\_CAUSE[62]	
+4-11	422-428	zaradi	_	_	_	HAS\_CAUSE[44]	frame\_CAUSE[62]	
+4-12	429-436	rušenja	_	B.1 Movement	_	HAS\_CAUSE[44]	_	
+4-13	437-443	stropa	_	_	_	HAS\_CAUSE[44]	_	
+4-14	443-444	,	_	_	_	_	_	
+4-15	445-449	zato	_	_	_	AFFECTS[45]	_	
+4-16	450-455	imajo	_	_	_	AFFECTS[45]	_	
+4-17	456-461	strma	_	_	_	AFFECTS[45]	_	
+4-18	462-469	pobočja	_	_	_	AFFECTS[45]	_	
+4-19	469-470	.	_	_	_	_	_	
+
+#Text=Udornice so površinske kraške oblike , ki so nastale s spelogenetskimi procesi (Mihevc, 2009).
+5-1	472-480	Udornice	_	A.1 Surface landform	DEFINIENDUM	_	_	
+5-2	481-483	so	_	_	DEFINITOR	_	_	
+5-3	484-494	površinske	_	_	GENUS[24]	HAS\_LOCATION	_	
+5-4	495-501	kraške	_	_	GENUS[24]	_	_	
+5-5	502-508	oblike	_	_	GENUS[24]	_	_	
+5-6	508-509	 	_	_	_	_	_	
+5-7	509-510	,	_	_	_	_	_	
+5-8	511-513	ki	_	_	_	_	_	
+5-9	514-516	so	_	_	_	HAS\_CAUSE[46]	frame\_CAUSE[63]	
+5-10	517-524	nastale	_	_	_	HAS\_CAUSE[46]	frame\_CAUSE[63]	
+5-11	525-526	s	_	_	_	HAS\_CAUSE[46]	frame\_CAUSE[63]	
+5-12	527-542	spelogenetskimi	_	B. Process[5]	_	HAS\_CAUSE[46]	_	
+5-13	543-550	procesi	_	B. Process[5]	_	HAS\_CAUSE[46]	_	
+5-14	551-552	(	_	_	_	_	_	
+5-15	552-558	Mihevc	_	_	_	_	_	
+5-16	558-559	,	_	_	_	_	_	
+5-17	560-564	2009	_	_	_	_	_	
+5-18	564-565	)	_	_	_	_	_	
+5-19	565-566	.	_	_	_	_	_	
+
+#Text=Udornice so izrazita površinska reliefna oblika , ki pa ima svoj izvor v podzemnem dogajanju.
+6-1	568-576	Udornice	_	A.1 Surface landform	DEFINIENDUM	_	_	
+6-2	577-579	so	_	_	DEFINITOR	_	_	
+6-3	580-588	izrazita	_	_	_	_	_	
+6-4	589-599	površinska	_	_	GENUS[25]	HAS\_LOCATION	_	
+6-5	600-608	reliefna	_	_	GENUS[25]	_	_	
+6-6	609-615	oblika	_	_	GENUS[25]	_	_	
+6-7	615-616	 	_	_	_	_	_	
+6-8	616-617	,	_	_	_	_	_	
+6-9	618-620	ki	_	_	_	_	_	
+6-10	621-623	pa	_	_	_	_	_	
+6-11	624-627	ima	_	_	_	HAS\_CAUSE[47]	frame\_CAUSE[64]	
+6-12	628-632	svoj	_	_	_	HAS\_CAUSE[47]	frame\_CAUSE[64]	
+6-13	633-638	izvor	_	_	_	HAS\_CAUSE[47]	frame\_CAUSE[64]	
+6-14	639-640	v	_	_	_	HAS\_CAUSE[47]	frame\_CAUSE[64]	
+6-15	641-650	podzemnem	_	B. Process[6]	_	HAS\_CAUSE[47]	_	
+6-16	651-660	dogajanju	_	B. Process[6]	_	HAS\_CAUSE[47]	_	
+6-17	660-661	.	_	_	_	_	_	
+
+#Text=Udornice so površinske kraške globeli različnih oblik in velikosti, katerih nastanek povezujemo s točkastim vertikalnim odnašanjem kamnine v podzemlje, bodisi z nenadnimi udori nad jamskimi prostori, bodisi s postopnim odnašanjem kamnine nad aktivnimi jamskimi rovi (Stepišnik, 2001).
+7-1	663-671	Udornice	_	A.1 Surface landform	DEFINIENDUM	_	_	
+7-2	672-674	so	_	_	DEFINITOR	_	_	
+7-3	675-685	površinske	_	_	GENUS[26]	_	_	
+7-4	686-692	kraške	_	A.1 Surface landform[7]	GENUS[26]	_	_	
+7-5	693-700	globeli	_	A.1 Surface landform[7]	GENUS[26]	_	_	
+7-6	700-701	 	_	_	_	_	_	
+7-7	701-710	različnih	_	_	_	HAS\_FORM[48]|HAS\_SIZE[49]	_	
+7-8	711-716	oblik	_	_	_	HAS\_FORM[48]	_	
+7-9	717-719	in	_	_	_	_	_	
+7-10	720-729	velikosti	_	_	_	HAS\_SIZE	_	
+7-11	729-730	,	_	_	_	_	_	
+7-12	731-738	katerih	_	_	_	_	_	
+7-13	739-747	nastanek	_	_	_	HAS\_CAUSE[50]	_	
+7-14	748-758	povezujemo	_	_	_	HAS\_CAUSE[50]	_	
+7-15	759-760	s	_	_	_	HAS\_CAUSE[50]	_	
+7-16	761-770	točkastim	_	_	_	HAS\_CAUSE[50]	_	
+7-17	771-782	vertikalnim	_	_	_	HAS\_CAUSE[50]	_	
+7-18	783-793	odnašanjem	_	B.1 Movement	_	HAS\_CAUSE[50]	_	
+7-19	794-801	kamnine	_	_	_	HAS\_CAUSE[50]	_	
+7-20	802-803	v	_	_	_	HAS\_CAUSE[50]	_	
+7-21	804-813	podzemlje	_	C. Geome	_	HAS\_CAUSE[50]	_	
+7-22	813-814	,	_	_	_	HAS\_CAUSE[50]	_	
+7-23	815-821	bodisi	_	_	_	HAS\_CAUSE[50]	frame\_CAUSE[65]	
+7-24	822-823	z	_	_	_	HAS\_CAUSE[50]	frame\_CAUSE[65]	
+7-25	824-833	nenadnimi	_	_	_	HAS\_CAUSE[50]	_	
+7-26	834-839	udori	_	B.1 Movement	_	HAS\_CAUSE[50]	_	
+7-27	840-843	nad	_	_	_	HAS\_CAUSE[50]	_	
+7-28	844-852	jamskimi	_	D.1 Abiotic[8]	_	HAS\_CAUSE[50]	_	
+7-29	853-861	prostori	_	D.1 Abiotic[8]	_	HAS\_CAUSE[50]	_	
+7-30	861-862	,	_	_	_	HAS\_CAUSE[50]	_	
+7-31	863-869	bodisi	_	_	_	HAS\_CAUSE[50]	frame\_CAUSE[66]	
+7-32	870-871	s	_	_	_	HAS\_CAUSE[50]	frame\_CAUSE[66]	
+7-33	872-881	postopnim	_	_	_	HAS\_CAUSE[50]	_	
+7-34	882-892	odnašanjem	_	B.1 Movement	_	HAS\_CAUSE[50]	_	
+7-35	893-900	kamnine	_	_	_	HAS\_CAUSE[50]	_	
+7-36	901-904	nad	_	_	_	HAS\_CAUSE[50]	_	
+7-37	905-914	aktivnimi	_	_	_	HAS\_CAUSE[50]	_	
+7-38	915-923	jamskimi	_	D.1 Abiotic[9]	_	HAS\_CAUSE[50]	_	
+7-39	924-928	rovi	_	D.1 Abiotic[9]	_	HAS\_CAUSE[50]	_	
+7-40	929-930	(	_	_	_	_	_	
+7-41	930-939	Stepišnik	_	_	_	_	_	
+7-42	939-940	,	_	_	_	_	_	
+7-43	941-945	2001	_	_	_	_	_	
+7-44	945-946	)	_	_	_	_	_	
+7-45	946-947	.	_	_	_	_	_	
+
+#Text=Udornice so zaprte centrične globeli na krasu.
+8-1	949-957	Udornice	_	A.1 Surface landform	DEFINIENDUM	_	_	
+8-2	958-960	so	_	_	DEFINITOR	_	_	
+8-3	961-967	zaprte	_	_	_	HAS\_FORM	_	
+8-4	968-977	centrične	_	_	_	HAS\_FORM	_	
+8-5	978-985	globeli	_	D.1 Abiotic[10]	GENUS[27]	_	_	
+8-6	985-986	 	_	D.1 Abiotic[10]	GENUS[27]	_	_	
+8-7	986-988	na	_	_	_	HAS\_LOCATION[51]	frame\_LOCATION	
+8-8	989-994	krasu	_	_	_	HAS\_LOCATION[51]	_	
+8-9	994-995	.	_	_	_	_	_	
+
+#Text=Za kraška polja sta značilna sklenjen obod nad razmeroma uravnanim obsežnim dnom in kraška hidrologija. Slovenska kraška terminologija (cit. Gams, 2004) opredeljuje, da je za kraško polje bistvena najmanj pol kilometra široka uravnava z višjim obodom.
+9-1	997-999	Za	_	_	_	_	_	
+9-2	1000-1006	kraška	kraško polje[1]	A.1 Surface landform[11]	DEFINIENDUM[28]	_	_	
+9-3	1007-1012	polja	kraško polje[1]	A.1 Surface landform[11]	DEFINIENDUM[28]	_	_	
+9-4	1013-1016	sta	_	_	DEFINITOR[29]	_	_	
+9-5	1017-1025	značilna	_	_	DEFINITOR[29]	_	_	
+9-6	1026-1034	sklenjen	_	_	_	HAS\_FORM[52]	_	
+9-7	1035-1039	obod	_	D.1 Abiotic	_	HAS\_FORM[52]	_	
+9-8	1040-1043	nad	_	_	_	HAS\_FORM[52]	_	
+9-9	1044-1053	razmeroma	_	_	_	HAS\_FORM[52]	_	
+9-10	1054-1063	uravnanim	_	_	_	HAS\_FORM[52]	_	
+9-11	1064-1072	obsežnim	_	_	_	HAS\_FORM[52]	_	
+9-12	1073-1077	dnom	_	_	_	HAS\_FORM[52]	_	
+9-13	1078-1080	in	_	_	_	_	_	
+9-14	1081-1087	kraška	_	D.3 Property[12]	_	HAS\_ATTRIBUTE[53]	_	
+9-15	1088-1099	hidrologija	_	D.3 Property[12]	_	HAS\_ATTRIBUTE[53]	_	
+9-16	1099-1100	.	_	_	_	_	_	
+9-17	1100-1101	 	_	_	_	_	_	
+9-18	1101-1110	Slovenska	_	_	_	_	_	
+9-19	1111-1117	kraška	_	_	_	_	_	
+9-20	1118-1131	terminologija	_	_	_	_	_	
+9-21	1131-1132	 	_	_	_	_	_	
+9-22	1132-1133	(	_	_	_	_	_	
+9-23	1133-1136	cit	_	_	_	_	_	
+9-24	1136-1137	.	_	_	_	_	_	
+9-25	1138-1142	Gams	_	_	_	_	_	
+9-26	1142-1143	,	_	_	_	_	_	
+9-27	1144-1148	2004	_	_	_	_	_	
+9-28	1148-1149	)	_	_	_	_	_	
+9-29	1150-1161	opredeljuje	_	_	_	_	_	
+9-30	1161-1162	,	_	_	_	_	_	
+9-31	1163-1165	da	_	_	_	_	_	
+9-32	1166-1168	je	_	_	DEFINITOR[30]	_	_	
+9-33	1169-1171	za	_	_	DEFINITOR[30]	_	_	
+9-34	1172-1178	kraško	_	A.1 Surface landform[13]	DEFINIENDUM[31]	_	_	
+9-35	1179-1184	polje	_	A.1 Surface landform[13]	DEFINIENDUM[31]	_	_	
+9-36	1185-1193	bistvena	_	_	DEFINITOR	_	_	
+9-37	1194-1201	najmanj	_	_	_	HAS\_FORM[54]	_	
+9-38	1202-1205	pol	_	_	_	HAS\_FORM[54]	_	
+9-39	1206-1215	kilometra	_	_	_	HAS\_FORM[54]	_	
+9-40	1216-1222	široka	_	_	_	HAS\_FORM[54]	_	
+9-41	1223-1231	uravnava	_	D.1 Abiotic	_	HAS\_FORM[54]	_	
+9-42	1232-1233	z	_	_	_	HAS\_FORM[54]	_	
+9-43	1234-1240	višjim	_	_	_	HAS\_FORM[54]	_	
+9-44	1241-1247	obodom	_	_	_	HAS\_FORM[54]	_	
+9-45	1247-1248	.	_	_	_	_	_	
+
+#Text=Jama je korozijska razpoka s premerom večjim od 5 – 15 milimetrov (Williams, 1989; cv: Hribernik, 2005).
+10-1	1250-1254	Jama	_	A.2 Underground landform	DEFINIENDUM	_	_	
+10-2	1255-1257	je	_	_	DEFINITOR	_	_	
+10-3	1258-1268	korozijska	_	_	GENUS[32]	HAS\_CAUSE	_	
+10-4	1269-1276	razpoka	_	D.1 Abiotic[14]	GENUS[32]	_	_	
+10-5	1276-1277	 	_	D.1 Abiotic[14]	_	_	_	
+10-6	1277-1278	s	_	_	_	HAS\_SIZE[55]	frame\_SIZE[67]	
+10-7	1279-1287	premerom	_	_	_	HAS\_SIZE[55]	frame\_SIZE[67]	
+10-8	1288-1294	večjim	_	_	_	HAS\_SIZE[55]	_	
+10-9	1295-1297	od	_	_	_	HAS\_SIZE[55]	_	
+10-10	1298-1299	5	_	_	_	HAS\_SIZE[55]	_	
+10-11	1300-1301	–	_	_	_	HAS\_SIZE[55]	_	
+10-12	1302-1304	15	_	_	_	HAS\_SIZE[55]	_	
+10-13	1305-1315	milimetrov	_	_	_	HAS\_SIZE[55]	_	
+10-14	1316-1317	(	_	_	_	_	_	
+10-15	1317-1325	Williams	_	_	_	_	_	
+10-16	1325-1326	,	_	_	_	_	_	
+10-17	1327-1331	1989	_	_	_	_	_	
+10-18	1331-1332	;	_	_	_	_	_	
+10-19	1333-1335	cv	_	_	_	_	_	
+10-20	1335-1336	:	_	_	_	_	_	
+10-21	1337-1346	Hribernik	_	_	_	_	_	
+10-22	1346-1347	,	_	_	_	_	_	
+10-23	1348-1352	2005	_	_	_	_	_	
+10-24	1352-1353	)	_	_	_	_	_	
+10-25	1353-1354	.	_	_	_	_	_	
+
+#Text=Jame so zakraselo podolje z mnogo vrtačami, med katerimi so nekatere globoke do 8 metrov.
+11-1	1356-1360	Jame	_	_	_	_	_	
+11-2	1361-1363	so	_	_	_	_	_	
+11-3	1364-1373	zakraselo	_	_	_	_	_	
+11-4	1374-1381	podolje	_	_	_	_	_	
+11-5	1381-1382	 	_	_	_	_	_	
+11-6	1382-1383	z	_	_	_	_	_	
+11-7	1384-1389	mnogo	_	_	_	_	_	
+11-8	1390-1398	vrtačami	_	_	_	_	_	
+11-9	1398-1399	,	_	_	_	_	_	
+11-10	1400-1403	med	_	_	_	_	_	
+11-11	1404-1412	katerimi	_	_	_	_	_	
+11-12	1413-1415	so	_	_	_	_	_	
+11-13	1416-1424	nekatere	_	_	_	_	_	
+11-14	1425-1432	globoke	_	_	_	_	_	
+11-15	1433-1435	do	_	_	_	_	_	
+11-16	1436-1437	8	_	_	_	_	_	
+11-17	1438-1444	metrov	_	_	_	_	_	
+11-18	1444-1445	.	_	_	_	_	_	
+
+#Text=Jame so podzemni kanali , ki jih je izoblikovala tekoča voda s procesom korozije.
+12-1	1447-1451	Jame	_	A.2 Underground landform	DEFINIENDUM	_	_	
+12-2	1452-1454	so	_	_	DEFINITOR	_	_	
+12-3	1455-1463	podzemni	_	_	GENUS[33]	HAS\_LOCATION	_	
+12-4	1464-1470	kanali	_	D.1 Abiotic[15]	GENUS[33]	_	_	
+12-5	1470-1471	 	_	D.1 Abiotic[15]	_	_	_	
+12-6	1471-1472	,	_	_	_	_	_	
+12-7	1473-1475	ki	_	_	_	_	_	
+12-8	1476-1479	jih	_	_	_	HAS\_CAUSE[56]	frame\_CAUSE[68]	
+12-9	1480-1482	je	_	_	_	HAS\_CAUSE[56]	frame\_CAUSE[68]	
+12-10	1483-1495	izoblikovala	_	_	_	HAS\_CAUSE[56]	frame\_CAUSE[68]	
+12-11	1496-1502	tekoča	_	D.1 Abiotic[16]	_	HAS\_CAUSE[56]	_	
+12-12	1503-1507	voda	_	D.1 Abiotic[16]	_	HAS\_CAUSE[56]	_	
+12-13	1508-1509	s	_	_	_	HAS\_CAUSE[56]	_	
+12-14	1510-1518	procesom	_	B. Process[17]	_	HAS\_CAUSE[56]	_	
+12-15	1519-1527	korozije	_	B. Process[17]	_	HAS\_CAUSE[56]	_	
+12-16	1527-1528	.	_	_	_	_	_	
+
+#Text=Jama je korozijskega nastanka , kasneje pa so jo povečali s kopanjem (Kataster jam JZS, 2016).
+13-1	1530-1534	Jama	_	_	_	_	_	
+13-2	1535-1537	je	_	_	_	_	_	
+13-3	1538-1550	korozijskega	_	_	_	_	_	
+13-4	1551-1559	nastanka	_	_	_	_	_	
+13-5	1559-1560	 	_	_	_	_	_	
+13-6	1560-1561	,	_	_	_	_	_	
+13-7	1562-1569	kasneje	_	_	_	_	_	
+13-8	1570-1572	pa	_	_	_	_	_	
+13-9	1573-1575	so	_	_	_	_	_	
+13-10	1576-1578	jo	_	_	_	_	_	
+13-11	1579-1587	povečali	_	_	_	_	_	
+13-12	1588-1589	s	_	_	_	_	_	
+13-13	1590-1598	kopanjem	_	_	_	_	_	
+13-14	1599-1600	(	_	_	_	_	_	
+13-15	1600-1608	Kataster	_	_	_	_	_	
+13-16	1609-1612	jam	_	_	_	_	_	
+13-17	1613-1616	JZS	_	_	_	_	_	
+13-18	1616-1617	,	_	_	_	_	_	
+13-19	1618-1622	2016	_	_	_	_	_	
+13-20	1622-1623	)	_	_	_	_	_	
+13-21	1623-1624	.	_	_	_	_	_	
+
+#Text=Jame so podzemni kanali , ki jih je naredila skozi kras tekoča voda.
+14-1	1626-1630	Jame	_	A.2 Underground landform	DEFINIENDUM	_	_	
+14-2	1631-1633	so	_	_	DEFINIENDUM	_	_	
+14-3	1634-1642	podzemni	_	_	GENUS[34]	HAS\_LOCATION	_	
+14-4	1643-1649	kanali	_	D.1 Abiotic[18]	GENUS[34]	_	_	
+14-5	1649-1650	 	_	D.1 Abiotic[18]	_	_	_	
+14-6	1650-1651	,	_	_	_	_	_	
+14-7	1652-1654	ki	_	_	_	_	_	
+14-8	1655-1658	jih	_	_	_	HAS\_CAUSE[57]	frame\_CAUSE[69]	
+14-9	1659-1661	je	_	_	_	HAS\_CAUSE[57]	frame\_CAUSE[69]	
+14-10	1662-1670	naredila	_	_	_	HAS\_CAUSE[57]	frame\_CAUSE[69]	
+14-11	1671-1676	skozi	_	_	_	HAS\_CAUSE[57]	_	
+14-12	1677-1681	kras	_	C. Geome	_	HAS\_CAUSE[57]	_	
+14-13	1682-1688	tekoča	_	D.1 Abiotic[19]	_	HAS\_CAUSE[57]	_	
+14-14	1689-1693	voda	_	D.1 Abiotic[19]	_	HAS\_CAUSE[57]	_	
+14-15	1693-1694	.	_	_	_	_	_	
+
+#Text=Jama je neaktiven ostanek vodne jame, ki je nastala v freatični ali epifreatični coni.
+15-1	1696-1700	Jama	_	_	_	_	_	
+15-2	1701-1703	je	_	_	_	_	_	
+15-3	1704-1713	neaktiven	_	_	_	_	_	
+15-4	1714-1721	ostanek	_	_	_	_	_	
+15-5	1721-1722	 	_	_	_	_	_	
+15-6	1722-1727	vodne	_	_	_	_	_	
+15-7	1728-1732	jame	_	_	_	_	_	
+15-8	1732-1733	,	_	_	_	_	_	
+15-9	1734-1736	ki	_	_	_	_	_	
+15-10	1737-1739	je	_	_	_	_	_	
+15-11	1740-1747	nastala	_	_	_	_	_	
+15-12	1748-1749	v	_	_	_	_	_	
+15-13	1750-1759	freatični	_	_	_	_	_	
+15-14	1760-1763	ali	_	_	_	_	_	
+15-15	1764-1776	epifreatični	_	_	_	_	_	
+15-16	1777-1781	coni	_	_	_	_	_	
+15-17	1781-1782	.	_	_	_	_	_	

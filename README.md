@@ -53,19 +53,28 @@ Here is a example of a valid input file containing annotations of one sentence:
 
 ## How to use
 
-The converter can be used as a standalone python application or as a very simple web application.
+The converter can be used as a standalone python application or as a very simple web application. The steps are as follows.
 
-
-#### Standalone application
 
 1. Clone this repository
+   ```bash
+   git clone https://github.com/vpodpecan/webanno2csv.git
+   cd webanno2csv
+   ```
 
-1. Prepare a virtual environment
+2. Prepare a virtual environment and install packages:
     ```bash
-    python3 -m
+    python3 -m venv env
+    source env/bin/activate
+    pip install -r requirements.txt
     ```
 
-Python 3.6+ and `pandas` are required.
-
-
-#### Web application
+3. Run the converter from command line
+   ```bash
+   python3 convert.py input_file.tsv
+   ```
+   or start the web application
+   ```bash
+   flask run
+   ```
+   and visit [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
