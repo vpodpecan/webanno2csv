@@ -1,0 +1,10 @@
+<!doctype html>
+<title>Conversion results</title>
+<h1>CSV files</h1>
+<ol>
+    {% for fname in results %}
+    <li>
+        <a href="{{ url_for('uploaded_file', filename=fname, temp_folder=tmpfolder) }}">{{fname}}</a>
+    </li>
+    {% endfor %}
+</ol>

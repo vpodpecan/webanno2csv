@@ -1,0 +1,12 @@
+<!doctype html>
+<title>Convert WebAnno tsv to csv</title>
+<h1>Upload a tsv file for processing</h1>
+<form method="post" enctype="multipart/form-data">
+  <input type="file" name="file" accept="text/tsv">
+  <input type="submit" value="run conversion">
+</form>
+<div>
+    {% if message %}
+    <p style="color:red;font-weight:bold;">{{ message }}</p>
+    {% endif %}
+</div>
