@@ -51,10 +51,24 @@ Here is a example of a valid input file containing annotations of one sentence:
 -  pandas 1.2+
 -  Flask 1.1+ (required for the web application)
 
-## How to use
+## How to run
 
-The converter can be used as a standalone python application or as a very simple web application. The steps are as follows.
+The converter can be run as a standalone python application or as a very simple web application.
+The easiest way is to run the web application with Docker.
 
+
+#### Using Docker
+
+Make sure that you have Docker installed. On Windows and Mac, install [Docker Desktop](https://www.docker.com/products/docker-desktop). On Linux, install Docker and Docker Compose. Then simply download this repository:
+[https://github.com/vpodpecan/webanno2csv/archive/main.zip](https://github.com/vpodpecan/webanno2csv/archive/main.zip), unzip it and run the following command inside its folder:
+   ```bash
+   docker-compose up
+   ```
+
+Wait until the image is prepared. It may take a minute the first time but the next run will be instantaneous. Then open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser.
+
+
+#### Standalone application
 
 1. Clone this repository
    ```bash
