@@ -1,6 +1,10 @@
 version: "3.3"
 services:
   web:
+    container_name: webanno2csv
     build: .
     ports:
       - "5000:5000"
+    volumes:
+      - .:/home/worker
+    command: flask run

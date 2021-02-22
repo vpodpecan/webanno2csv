@@ -65,7 +65,14 @@ Make sure that you have Docker installed. On Windows and Mac, install [Docker De
    docker-compose up
    ```
 
-Wait until the image is prepared. It may take a minute the first time but the next run will be instantaneous. Then open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser.
+Wait until the container is prepared. It may take a minute the first time but the next run will be instantaneous. Then open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser. All the files that the application produces are stored in the folder `uploads` where each run will result in a unique subfolder containing all the data.
+
+If you want to run the application as standalone using Docker, the following commands will give you the access to the convertion script running inside the container:
+   ```bash
+   docker-compose up -d
+   docker exec -it webanno2csv bash
+   python3 convert.py input_file.tsv
+   ```
 
 
 #### Standalone application

@@ -7,14 +7,11 @@ from flask import send_from_directory
 from flask import render_template, render_template_string
 
 import convert
+from convert import TERM_CAT_GEN_SENT_REL_file, TERM_CATEGORY_file, DEF_ELEMENTS_file, REL_REL_FRAME_file
 
 
 UPLOAD_FOLDER = os.path.abspath('uploads')
 ALLOWED_EXTENSIONS = {'tsv'}
-TERM_CAT_GEN_SENT_REL_file = 'TERM_CAT_GEN_SENT_REL.csv'
-TERM_CATEGORY_file = 'TERM_CATEGORY.csv'
-DEF_ELEMENTS_file = 'DEF_ELEMENTS.csv'
-REL_REL_FRAME_file = 'REL_REL_FRAME.csv'
 
 
 app = Flask(__name__)

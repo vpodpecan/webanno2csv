@@ -1,15 +1,20 @@
+import os
 import csv
 import re
 import copy
 import time
 import argparse
-from pprint import pprint
 from collections import defaultdict
 import pandas as pd
 import numpy as np
 
 
 COLNAME2POS = {val: k for k, val in enumerate(['TOKENID', 'POSITION', 'TOKEN', 'CANONICAL', 'CATEGORY', 'DEF_ELEMENT', 'RELATION', 'REL_VERB_FRAME'])}
+
+TERM_CAT_GEN_SENT_REL_file = 'TERM_CAT_GEN_SENT_REL.csv'
+TERM_CATEGORY_file = 'TERM_CATEGORY.csv'
+DEF_ELEMENTS_file = 'DEF_ELEMENTS.csv'
+REL_REL_FRAME_file = 'REL_REL_FRAME.csv'
 
 
 def read_sentences(fname):
@@ -207,9 +212,11 @@ if __name__ == '__main__':
 
     parser.add_argument("tsv_file", help="WebAnno tsv file")
     args = parser.parse_args()
+    path, fname = os.path.split(os.path.abspath(args.tsv_file))
+    base, suffix = os.path.splitext(fname)
 
     datalines, groups = read_data(args.tsv_file)
-    export_TERM_CAT_GEN_SENT_REL(datalines, 'TERM_CAT_GEN_SENT_REL.csv')
-    export_TERM_CATEGORY(datalines, 'TERM_CATEGORY.csv')
-    export_DEF_ELEMENTS(datalines, 'DEF_ELEMENTS.csv')
-    export_REL_REL_FRAME(datalines, groups, 'REL_REL_FRAME.csv')
+    export_TERM_CAT_GEN_SENT_REL(datalines, os.path.join(path, '{}__{}'.format(base, TERM_CAT_GEN_SENT_REL_file)))
+    export_TERM_CATEGORY(datalines, os.path.join(path, '{}__{}'.format(base, TERM_CATEGORY_file)))
+    export_DEF_ELEMENTS(datalines, os.path.join(path, '{}__{}'.format(base, DEF_ELEMENTS_file)))
+    export_REL_REL_FRAME(datalines, groups, os.path.join(path, '{}__{}'.format(base, REL_REL_FRAME_file)))
