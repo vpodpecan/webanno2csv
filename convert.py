@@ -8,7 +8,6 @@ from collections import defaultdict
 import pandas as pd
 import numpy as np
 
-
 COLNAME2POS = {val: k for k, val in enumerate(['TOKENID', 'POSITION', 'TOKEN', 'CANONICAL', 'CATEGORY', 'DEF_ELEMENT', 'RELATION', 'REL_VERB_FRAME'])}
 
 TERM_CAT_GEN_SENT_REL_file = 'TERM_CAT_GEN_SENT_REL.csv'
@@ -25,15 +24,39 @@ def read_sentences(fname):
     table = pd.read_csv(fname, sep='\t', quoting=csv.QUOTE_NONE, comment='#', header=None, na_values='_', index_col=0, encoding='utf-8')
     table = table.replace('\xa0', ' ', regex=True)
     table.drop([colid for colid in table.columns if table[colid].isnull().all()], inplace=True, axis='columns')  # drop empty columns
+    if len(table.columns) + 1 < len(COLNAME2POS):
+        raise SyntaxError('Invalid number of columns in file {}'.format(fname))
     groups = [pd.DataFrame(data) for gid, data in table.groupby(by=lambda s: int(s.split('-')[0]))]
     return groups
 
 
-def read_data(fname):
+def read_data(path):
     '''
     Reads the data from Webanno csv and returns a list where every element is a dictionary representing one annotated sentence.
     '''
-    groups = read_sentences(fname)
+
+    nfinished = 0
+    errors = []
+    if os.path.isfile(path):
+        groups = read_sentences(path)
+        nfinished += 1
+    elif os.path.isdir(path):
+        with os.scandir(path) as it:
+            groups = []
+            for entry in it:
+                if entry.is_file() and not entry.name.startswith('.') and os.path.splitext(entry.name)[1].lower() in ['.tsv', '.csv']:
+                    try:
+                        groups.extend(read_sentences(os.path.join(path, entry.name)))
+                    except:
+                        errors.append(os.path.join(path, entry.name))
+                    else:
+                        nfinished += 1
+    else:
+        raise IOError('The input must be a file or folder')
+
+    print('{} file(s) loaded.'.format(nfinished))
+    if errors:
+        print('{} file(s) not loaded due to errors:\n\t{}'.format(len(errors), '\n\t'.join(errors)))
 
     # first, expand all cells with multiple values separated with "|" into new rows
     datalines = []
@@ -210,13 +233,27 @@ if __name__ == '__main__':
                                             They are specific to the TermFrame project.\
                                             Currently, the converter produces 4 csv files containing different selections of columns.")
 
-    parser.add_argument("tsv_file", help="WebAnno tsv file")
+    parser.add_argument("tsv_file_or_folder", help="WebAnno .tsv file or folder with .tsv/.csv files")
     args = parser.parse_args()
-    path, fname = os.path.split(os.path.abspath(args.tsv_file))
-    base, suffix = os.path.splitext(fname)
 
-    datalines, groups = read_data(args.tsv_file)
-    export_TERM_CAT_GEN_SENT_REL(datalines, os.path.join(path, '{}__{}'.format(base, TERM_CAT_GEN_SENT_REL_file)))
-    export_TERM_CATEGORY(datalines, os.path.join(path, '{}__{}'.format(base, TERM_CATEGORY_file)))
-    export_DEF_ELEMENTS(datalines, os.path.join(path, '{}__{}'.format(base, DEF_ELEMENTS_file)))
-    export_REL_REL_FRAME(datalines, groups, os.path.join(path, '{}__{}'.format(base, REL_REL_FRAME_file)))
+    if os.path.isfile(args.tsv_file_or_folder):
+        path, fname = os.path.split(os.path.abspath(args.tsv_file_or_folder))
+        base, _ = os.path.splitext(fname)
+        sep = '__'
+    elif os.path.isdir(args.tsv_file_or_folder):
+        path = args.tsv_file_or_folder
+        base = ''
+        sep = ''
+    else:
+        raise IOError('The input must be a file or folder')
+
+    datalines, groups = read_data(args.tsv_file_or_folder)
+    if datalines:
+        print('Exporting...')
+        export_TERM_CAT_GEN_SENT_REL(datalines, os.path.join(path, '{}{}{}'.format(base, sep, TERM_CAT_GEN_SENT_REL_file)))
+        export_TERM_CATEGORY(datalines, os.path.join(path, '{}{}{}'.format(base, sep, TERM_CATEGORY_file)))
+        export_DEF_ELEMENTS(datalines, os.path.join(path, '{}{}{}'.format(base, sep, DEF_ELEMENTS_file)))
+        export_REL_REL_FRAME(datalines, groups, os.path.join(path, '{}{}{}'.format(base, sep, REL_REL_FRAME_file)))
+        print('All done.')
+    else:
+        print('Nothing to export, exiting.')

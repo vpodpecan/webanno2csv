@@ -1,7 +1,7 @@
 ## A converter from WebAnno tsv to csv
 
-This repository contains a converver from a WebAnno .tsv file to a set of .csv files.
-Please note that the input tsv is **specific to the [TermFrame project](https://termframe.ff.uni-lj.si/) project** and is expected to contain custom annotation columns for:
+This repository contains a converver from a WebAnno .tsv file(s) to a set of .csv files.
+Please note that the input tsv format is **specific to the [TermFrame project](https://termframe.ff.uni-lj.si/) project** and is expected to contain custom annotation columns for:
 
 1.  cannonical form,
 2.  category,
@@ -53,8 +53,7 @@ Here is a example of a valid input file containing annotations of one sentence:
 
 ## How to run
 
-The converter can be run as a standalone python application or as a very simple web application.
-The easiest way is to run the web application with Docker.
+The converter can be run as a standalone python application or as a very simple web application. As a standalone application it can convert a single file or whole folders. As a web application it only converts single files.
 
 
 #### Using Docker
@@ -71,8 +70,10 @@ If you want to run the application from command line using Docker, the following
    ```bash
    docker-compose up -d
    docker exec -it webanno2csv bash
-   python3 convert.py input_file.tsv
+   python3 convert.py my_file_or_folder
    ```
+
+The script will print a brief report and, in the case of errors, a list the files which were not converted.
 
 **Important**: settings for the docker container are ok for personal use but **not safe for production!** If you want to use it for production, you will need to add a proxy, a WSGI server and remove the volume mount.
 

@@ -47,13 +47,17 @@ def upload_file():
             file.save(fullfilename)
 
             # do the extraction
-            datalines, groups = convert.read_data(fullfilename)
-            convert.export_TERM_CAT_GEN_SENT_REL(datalines, os.path.join(folder, TERM_CAT_GEN_SENT_REL_file))
-            convert.export_TERM_CATEGORY(datalines, os.path.join(folder, TERM_CATEGORY_file))
-            convert.export_DEF_ELEMENTS(datalines, os.path.join(folder, DEF_ELEMENTS_file))
-            convert.export_REL_REL_FRAME(datalines, groups, os.path.join(folder, REL_REL_FRAME_file))
-            return render_template('results.html', tmpfolder=tmpfolder,
-                                   results=[TERM_CAT_GEN_SENT_REL_file, TERM_CATEGORY_file, DEF_ELEMENTS_file, REL_REL_FRAME_file])
+            try:
+                datalines, groups = convert.read_data(fullfilename)
+                convert.export_TERM_CAT_GEN_SENT_REL(datalines, os.path.join(folder, TERM_CAT_GEN_SENT_REL_file))
+                convert.export_TERM_CATEGORY(datalines, os.path.join(folder, TERM_CATEGORY_file))
+                convert.export_DEF_ELEMENTS(datalines, os.path.join(folder, DEF_ELEMENTS_file))
+                convert.export_REL_REL_FRAME(datalines, groups, os.path.join(folder, REL_REL_FRAME_file))
+            except Exception as e:
+                return render_template('index.html', message=str(e))
+            else:
+                return render_template('results.html', tmpfolder=tmpfolder,
+                                       results=[TERM_CAT_GEN_SENT_REL_file, TERM_CATEGORY_file, DEF_ELEMENTS_file, REL_REL_FRAME_file])
         else:
             return render_template('index.html', message="ERROR: only .tsv files are allowed.")
     else:
