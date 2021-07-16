@@ -5,8 +5,10 @@ import copy
 import time
 import argparse
 from collections import defaultdict
+
 import pandas as pd
 import numpy as np
+import networkx as nx
 
 COLNAME2POS = {val: k for k, val in enumerate(['TOKENID', 'POSITION', 'TOKEN', 'CANONICAL', 'CATEGORY', 'DEF_ELEMENT', 'RELATION', 'REL_VERB_FRAME'])}
 
@@ -63,16 +65,18 @@ def read_data(path):
     new_groups = []
     for g in groups:
         new_rows = []
-        for colid in g.columns[4:]:  # in first four columns this cannot happen
+        for colid in g.columns[3:]:  # in first four columns this cannot happen
             ismulti = g[colid].str.contains('|', na=False, regex=False)
             multirows = g[ismulti]
             if not multirows.empty:
                 for idx, row in multirows.iterrows():
                     values = [x.strip() for x in row[colid].split('|')]
                     g[colid].loc[idx] = values[0]
+
+                    # print('--->', values)
                     for i, val in enumerate(values[1:]):
                         # create a new row which only contains this column and row index (name), everything else is NaN
-                        new = pd.Series(index=row.index, dtype=np.object, name=row.name + '-{}'.format(i+1))
+                        new = pd.Series(index=row.index, dtype=np.object, name=row.name + '-{}-{}'.format(colid, i+1))
                         new[colid] = val
                         new[COLNAME2POS['TOKEN']] = row[COLNAME2POS['TOKEN']]
                         new_rows.append(new)
@@ -82,10 +86,11 @@ def read_data(path):
     groups = new_groups
 
     for g in groups:
-        for colid in g.columns[4:]:
+        for colid in g.columns[3:]:
             nonempty = g[~g[colid].isna()]
             for idx, row in nonempty.iterrows():
                 # print(colid, idx, g[colid].loc[idx], type(g[colid].loc[idx]))
+                # print(g[colid].loc[idx])
                 if not g[colid].loc[idx].endswith(']'):
                     g[colid].loc[idx] += '[{}]'.format(str(time.time()).replace('.', ''))
                     # print(colid, idx, g[colid].loc[idx])
@@ -226,14 +231,46 @@ def export_REL_REL_FRAME(datalines, groups, outfile):
             writer.writerow(out)
 
 
+def make_network(datalines, groups):
+    RELCOL = COLNAME2POS['RELATION']
+    relations = set()
+    for g in groups:
+        relations.update(g[RELCOL][~g[RELCOL].isna()].values.tolist())
+    relations = set([re.sub('\[[0-9]+\]$', '', relation).replace('\\', '') for relation in relations])
+
+    g = nx.DiGraph()
+    for line in datalines:
+        # these two types are always added
+        for ntype in ['DEFINIENDUM', 'GENUS']:
+            for node in line.get(ntype, []):
+                g.add_node(node, group=ntype)
+
+        for a in line.get('DEFINIENDUM', []):
+            for b in line.get('CATEGORY', []):
+                if b not in g.nodes:
+                    g.add_node(b, group='CATEGORY')
+                g.add_edge(a, b, label='has category')
+            for b in line.get('GENUS', []):
+                g.add_edge(a, b, label='is a')
+            for rel in relations:
+                for b in line.get(rel, []):
+                    if b not in g.nodes:
+                        # only add when we want to add an edge
+                        g.add_node(b, group='RELATION')
+                    g.add_edge(a, b, label=rel.lower().replace('_', ' '))
+    return g
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='A converter from WebAnno tsv to csv (multiple values per cell may occur)',
                                      epilog="Note: this converter assumes at least 5 annotations per token:\
                                             'CANONICAL', 'CATEGORY', 'DEF_ELEMENT', 'RELATION', 'REL_VERB_FRAME'.\
                                             They are specific to the TermFrame project.\
-                                            Currently, the converter produces 4 csv files containing different selections of columns.")
+                                            Currently, the converter produces 4 csv files containing different selections of columns. \
+                                            A network created from the parsed data can also be exported.")
 
     parser.add_argument("tsv_file_or_folder", help="WebAnno .tsv file or folder with .tsv/.csv files")
+    parser.add_argument('-n', '--network', action='store_true', help="Also export a network created from parsed .tsv/.csv files")
     args = parser.parse_args()
 
     if os.path.isfile(args.tsv_file_or_folder):
@@ -254,6 +291,10 @@ if __name__ == '__main__':
         export_TERM_CATEGORY(datalines, os.path.join(path, '{}{}{}'.format(base, sep, TERM_CATEGORY_file)))
         export_DEF_ELEMENTS(datalines, os.path.join(path, '{}{}{}'.format(base, sep, DEF_ELEMENTS_file)))
         export_REL_REL_FRAME(datalines, groups, os.path.join(path, '{}{}{}'.format(base, sep, REL_REL_FRAME_file)))
+        if args.network:
+            g = make_network(datalines, groups)
+            nx.write_graphml(g, os.path.join(path, '{}{}{}.xml'.format(base, sep, 'network')))
+            nx.write_gpickle(g, os.path.join(path, '{}{}{}.pickle'.format(base, sep, 'network')))
         print('All done.')
     else:
         print('Nothing to export, exiting.')
