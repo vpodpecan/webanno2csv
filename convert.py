@@ -17,6 +17,8 @@ TERM_CATEGORY_file = 'TERM_CATEGORY.csv'
 DEF_ELEMENTS_file = 'DEF_ELEMENTS.csv'
 REL_REL_FRAME_file = 'REL_REL_FRAME.csv'
 
+uncapitalize = lambda s: s[:1].lower() + s[1:] if s else ''
+
 
 def read_sentences(fname):
     '''
@@ -231,7 +233,7 @@ def export_REL_REL_FRAME(datalines, groups, outfile):
             writer.writerow(out)
 
 
-def make_network(datalines, groups):
+def make_networkOLD(datalines, groups):
     RELCOL = COLNAME2POS['RELATION']
     relations = set()
     for g in groups:
@@ -259,6 +261,63 @@ def make_network(datalines, groups):
                         g.add_node(b, group='RELATION')
                     g.add_edge(a, b, label=rel.lower().replace('_', ' '))
     return g
+
+
+def make_network(groups):
+    graph = nx.DiGraph()
+    for g in groups:
+        group_data = defaultdict(list)
+        colid = COLNAME2POS['DEF_ELEMENT']
+        for val in list(g[colid].value_counts().index):
+            rows = g.loc[g[colid] == val]
+            string = ' '.join([x.strip() for x in rows[COLNAME2POS['TOKEN']].values.tolist() if x.strip()])
+            # take canonical form if it exists (typical for SPECIES)
+            canonical = rows[COLNAME2POS['CANONICAL']][0]
+            if canonical is not np.nan:
+                string = canonical
+            if string.isupper():
+                string = string.lower()
+            string = uncapitalize(string)
+            val = re.sub('\[[0-9]+\]$', '', val)  # strip ending number in brackets
+            val = val.replace('\\', '')
+            defelement_type = val
+            defelement_string = string
+            category = rows[COLNAME2POS['CATEGORY']][0]
+            if category is not np.nan:
+                category = re.sub('\[[0-9]+\]$', '', category).replace('\\', '')
+                group_data['CATEGORY'].append(category)
+                graph.add_node(category, group='CATEGORY')
+
+            if defelement_type in ['DEFINIENDUM', 'GENUS']:  #, 'SPECIES']:
+                group_data[defelement_type].append(defelement_string)
+                graph.add_node(defelement_string, group=defelement_type)
+
+            if defelement_type == 'DEFINIENDUM':
+                graph.add_edge(defelement_string, category, label='has category')
+            # print('--', defelement_type, defelement_string, category)
+            # print()
+
+        colid = COLNAME2POS['RELATION']
+        for val in list(g[colid].value_counts().index):
+            rows = g.loc[g[colid] == val]
+            string = ' '.join([x.strip() for x in rows[COLNAME2POS['TOKEN']].values.tolist() if x.strip()]).replace(' ,', ',').replace('( ', '(').replace(' )', ')')
+            if string.isupper():
+                string = string.lower()
+            string = uncapitalize(string)
+            val = re.sub('\[[0-9]+\]$', '', val)  # strip ending number in brackets
+            val = val.replace('\\', '')
+            relation_type = val
+            relation_string = string
+            # print('++', relation_type, relation_string)
+            group_data['RELATION'].append((relation_type, relation_string))
+            graph.add_node(relation_string, group='RELATION')
+
+        for definiendum in group_data['DEFINIENDUM']:
+            for genus in group_data['GENUS']:
+                graph.add_edge(definiendum, genus, label='is a')
+            for relation_type, relation_string in group_data['RELATION']:
+                graph.add_edge(definiendum, relation_string, label=relation_type.lower().replace('_', ' '))
+    return graph
 
 
 if __name__ == '__main__':
@@ -292,7 +351,7 @@ if __name__ == '__main__':
         export_DEF_ELEMENTS(datalines, os.path.join(path, '{}{}{}'.format(base, sep, DEF_ELEMENTS_file)))
         export_REL_REL_FRAME(datalines, groups, os.path.join(path, '{}{}{}'.format(base, sep, REL_REL_FRAME_file)))
         if args.network:
-            g = make_network(datalines, groups)
+            g = make_network(groups)
             nx.write_graphml(g, os.path.join(path, '{}{}{}.xml'.format(base, sep, 'network')))
             nx.write_gpickle(g, os.path.join(path, '{}{}{}.pickle'.format(base, sep, 'network')))
         print('All done.')
